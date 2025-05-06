@@ -1,0 +1,17 @@
+.nav {
+    position: relative;
+    height: 4%;
+}
+
+.navlinks {
+    position: relative;
+    display: flex;
+    gap: 3%;
+    justify-content: flex-end;
+    right: 3%;
+}
+
+a {
+    text-decoration: none;
+    color: whitesmoke;
+}
