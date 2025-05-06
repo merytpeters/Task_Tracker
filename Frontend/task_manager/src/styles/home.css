@@ -1,0 +1,6 @@
+.home-container {
+    background: rgb(55, 107, 131);
+    width: 100vw;
+    min-height: 100vh;
+    position: absolute;
+}
