@@ -47,11 +47,11 @@ This is a basic task tracker application built with Node.js and React. It includ
 4. Start the development servers:
     ```bash
     # In one terminal, start the backend server
-    cd server
+    cd Backend
     node server.js
 
     # In another terminal, start the frontend
-    cd client
+    cd Frontend
     npm start
     ```
 
