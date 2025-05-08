@@ -4,6 +4,8 @@ import Navbar from '../Components/navbar.jsx';
 import { useNavigate } from 'react-router-dom';
 import '../styles/signup.css';
 
+const baseUrl = process.env.REACT_APP_API_BASE_URL;
+
 function Signup() {
     const [formData, setFormData] = useState ({
         first_name: '',
@@ -28,7 +30,7 @@ function Signup() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = axios.post('http://localhost:3000/api/users/signup', formData)
+            const response = axios.post(`${baseUrl}/signup`, formData)
             console.log("User Created:", response.data)
             alert("Signup Successful");
             navigate('/login');
