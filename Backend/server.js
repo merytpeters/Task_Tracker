@@ -13,7 +13,7 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 
 app.use(cors({
-  origin: 'http://localhost:3001',
+  origin: 'https://task-tracker-nine-delta.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }
@@ -27,7 +27,7 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 });
 
 // Routes
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.json({message: 'Welcome to the Home Page of Task Tracker'});
 });
 
