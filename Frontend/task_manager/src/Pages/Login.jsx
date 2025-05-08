@@ -40,6 +40,7 @@ function Login() {
     return (
         <div className="login">
             <Navbar />
+            <div class="pixie" style={{ backgroundImage: "url('/img/task-graphic.png')"}}>
             <p className='login-header'>Login</p>
             <form className="login-form" onSubmit={handleSubmit}>
                 <div>
@@ -69,6 +70,7 @@ function Login() {
                 </div>
                 <button type="submit" className="login-button">Login</button>
             </form>
+            </div>
         </div>
     );
 }

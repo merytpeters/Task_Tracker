@@ -48,6 +48,7 @@ function Signup() {
     return (
         <div className="signup">
             <Navbar />
+            <div class="pixie" style={{ backgroundImage: "url('/img/task-graphic.png')"}}>
             <p className='signup-header'>SignUp</p>
             <form className="form" onSubmit={handleSubmit}>
                 <div>
@@ -106,6 +107,7 @@ function Signup() {
                 </div>
                 <button type='submit' className='signup-button'>Signup</button>
             </form>
+            </div>
         </div>
     )
 }

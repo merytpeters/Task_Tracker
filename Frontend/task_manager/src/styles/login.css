@@ -1,5 +1,5 @@
 .login {
-    background: rgb(55, 107, 131);
+    background: rgb(43, 130, 171);
     position: absolute;
     min-height: 100vh;
     width: 100vw;
@@ -8,10 +8,11 @@
 .login-header {
     position: absolute;
     display: flex;
-    left: 45%;
+    left: 47%;
     font-size: x-large;
-    margin-top: 10%;
+    margin-top: 12%;
     color: whitesmoke;
+    z-index: 1000;
 }
 
 .login-form {
@@ -19,12 +20,12 @@
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
-    gap: 50px;
+    gap: 30px;
     height: 25vh;
     position: relative;
-    margin: 20% auto;
+    margin: 10% auto;
     width: 15%;
-    background: rgb(26, 48, 58);
+    background: rgb(51, 109, 136);
     padding: 7%;
     border-radius: 8px;
 }
@@ -44,7 +45,7 @@
 .login-button {
     top: 0;
     margin: auto;
-    background-color: rgb(55, 107, 131);
+    background: rgb(26, 48, 58);
     border-radius: 4px;
     padding: 10px 20px;
     color: whitesmoke;

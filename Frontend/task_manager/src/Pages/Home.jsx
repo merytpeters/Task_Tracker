@@ -7,7 +7,10 @@ function Home() {
     return (
         <div className='home-container'>
            <Navbar/>
-           <h1>Home Page</h1>
+           <div class="pixie" style={{ backgroundImage: "url('/img/task-graphic.png')"}}>
+           <h1>Task Tidy</h1>
+           <div class="sparkle"></div>
+           </div>
         </div>
     );
 };

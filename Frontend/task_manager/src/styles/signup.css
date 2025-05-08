@@ -1,5 +1,5 @@
 .signup {
-    background: rgb(55, 107, 131);
+    background: rgb(43, 130, 171);
     position: absolute;
     min-height: 100vh;
     width: 100vw;
@@ -10,21 +10,22 @@
     display: flex;
     left: 45%;
     font-size: x-large;
-    margin-top: 10%;
+    margin-top: 6%;
     color: whitesmoke;
+    z-index: 1000;
 }
 
 .form {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     gap: 10px 24px;
-    height: 50vh;
-    position: relative;
-    margin: 20% auto;
-    width: 30%;
-    background: rgb(26, 48, 58);
+    height: 40vh;
+    margin: 5% auto;
+    width: 35%;
+    background: rgb(51, 109, 136);
     padding: 7%;
     border-radius: 8px;
 }
@@ -44,7 +45,7 @@
 .signup-button {
     top: 0;
     margin: auto;
-    background-color: rgb(55, 107, 131);
+    background: rgb(26, 48, 58);
     border-radius: 4px;
     padding: 10px 20px;
     color: whitesmoke;

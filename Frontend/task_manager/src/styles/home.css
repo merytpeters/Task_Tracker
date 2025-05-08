@@ -1,6 +1,13 @@
 .home-container {
-    background: rgb(55, 107, 131);
+    background: rgb(43, 130, 171);
     width: 100vw;
     min-height: 100vh;
     position: absolute;
 }
+
+  .pixie h1 {
+    display: flex;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
