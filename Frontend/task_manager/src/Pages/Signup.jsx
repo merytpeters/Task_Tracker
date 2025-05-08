@@ -30,7 +30,7 @@ function Signup() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = axios.post(`${baseUrl}/users/signup`, formData)
+            const response = axios.post(`${baseUrl}/api/users/signup`, formData)
             console.log("User Created:", response.data)
             alert("Signup Successful");
             navigate('/login');
