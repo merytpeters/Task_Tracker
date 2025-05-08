@@ -30,12 +30,13 @@ function Signup() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = axios.post(`${baseUrl}/api/users/signup`, formData)
-            console.log("User Created:", response.data)
+            // const response = 
+            axios.post(`${baseUrl}/api/users/signup`, formData)
+            // console.log("User Created:", response.data)
             alert("Signup Successful");
             navigate('/login');
         } catch (error) {
-            console.error("Error creating user:", error);
+            // console.error("Error creating user:", error);
         }
 
         if (formData.password !== formData.confirmPassword) {

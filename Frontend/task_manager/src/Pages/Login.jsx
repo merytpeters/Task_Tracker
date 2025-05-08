@@ -27,12 +27,13 @@ function Login() {
         const handleSubmit = async (e) => {
             e.preventDefault();
             try {
-                const response = axios.post(`${baseUrl}/api/users/login`, formData)
-                console.log("Login succesful:", response.data)
+                // const response = 
+                axios.post(`${baseUrl}/api/users/login`, formData)
+                // console.log("Login succesful:", response.data)
                 alert("Successful");
                 navigate('/profile');
             } catch (error) {
-                console.error("Error Signing in:", error);
+                // console.error("Error Signing in:", error);
             }
         };
 
