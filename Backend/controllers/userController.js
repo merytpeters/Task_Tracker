@@ -84,27 +84,33 @@ export async function getUser(req, res) {
 }
 
 export async function login(req, res) {
-    const { email, password } = req.body;
+    const { email, username, password } = req.body;
+
+    if (!password || (!email && !username)) {
+        return res.status(400).send({ message: 'Email or username and password are required' });
+    }
+
+    const query = email ? { email } : { username };
 
     try {
-        const user = await User.findOne({ email });
+        const user = await User.findOne(query);
         if (!user) {
-            return res.status(404).send('User not found.');
+            return res.status(404).send({ message: 'User not found.' });
         }
 
         const passwordIsValid = await bcrypt.compare(password, user.password);
         if (!passwordIsValid) {
-            return res.status(401).send({ auth: false, token: null });
+            return res.status(401).send({ message: 'Invalid password', auth: false, token: null });
         }
 
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-            expiresIn: 86400
+            expiresIn: '1d'
         });
 
-        res.status(200).send({ auth: true, token });
+        res.status(200).send({ auth: true, token, user: { id: user._id, username: user.username, email: user.email } });
     } catch (err) {
         console.error('Error during login:', err);
-        res.status(500).send('Error on the server.');
+        res.status(500).send({ message: 'Error on the server.', error: err.message });
     }
 }
 
