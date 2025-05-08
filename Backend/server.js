@@ -12,8 +12,13 @@ const port = process.env.PORT || 3000;
 // Middleware to parse JSON
 app.use(express.json());
 
+const allowedOrigins = [
+  'http://localhost:3000', // for local dev
+  'https://task-tracker-nine-delta.vercel.app' // Vercel frontend
+];
+
 app.use(cors({
-  origin: 'https://task-tracker-nine-delta.vercel.app',
+  origin: allowedOrigins,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }
