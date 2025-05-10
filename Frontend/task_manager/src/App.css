@@ -9,11 +9,11 @@
 /* Style for Pixie Graphic */
 .pixie {
     position: absolute;
-    bottom: 12%;
+    bottom: 7vh;
     right: 10%;
     margin-top: auto;
     width: 75%;
-    height: 75vh;
+    height: 85vh;
     background-size: contain;
     animation: floatAnimation 5s ease-in-out infinite;
     border-radius: 2%;
