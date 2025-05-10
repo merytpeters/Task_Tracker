@@ -38,9 +38,9 @@ function Login() {
         };
 
     return (
-        <div className="login">
+        <div className="page-container">
             <Navbar />
-            <div class="pixie" style={{ backgroundImage: "url('/img/task-graphic.png')"}}>
+            <div className="pixie" style={{ backgroundImage: "url('/img/task-graphic.png')"}}>
             <p className='login-header'>Login</p>
             <form className="login-form" onSubmit={handleSubmit}>
                 <div>

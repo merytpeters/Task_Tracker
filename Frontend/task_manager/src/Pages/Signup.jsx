@@ -46,9 +46,9 @@ function Signup() {
     };
         
     return (
-        <div className="signup">
+        <div className="page-container">
             <Navbar />
-            <div class="pixie" style={{ backgroundImage: "url('/img/task-graphic.png')"}}>
+            <div className="pixie" style={{ backgroundImage: "url('/img/task-graphic.png')"}}>
             <p className='signup-header'>SignUp</p>
             <form className="form" onSubmit={handleSubmit}>
                 <div>

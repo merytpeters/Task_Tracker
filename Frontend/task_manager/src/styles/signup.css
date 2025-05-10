@@ -1,16 +1,9 @@
-.signup {
-    background: rgb(43, 130, 171);
-    position: absolute;
-    min-height: 100vh;
-    width: 100vw;
-}
-
 .signup-header {
     position: absolute;
     display: flex;
     left: 45%;
     font-size: x-large;
-    margin-top: 6%;
+    margin-top: 8%;
     color: whitesmoke;
     z-index: 1000;
 }
@@ -49,4 +42,18 @@
     border-radius: 4px;
     padding: 10px 20px;
     color: whitesmoke;
+}
+
+@media (max-width: 800px) {
+    .form {
+      gap: 5px;
+      height: 60vh;
+      margin: 10% auto;
+      width: 60%;
+    }
+
+    .signup-header {
+      margin: 12% auto;
+      left: 40%;
+    }
 }

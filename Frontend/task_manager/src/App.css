@@ -1,3 +1,11 @@
+/* Container for all pages */
+.page-container {
+  background: rgb(43, 130, 171);
+  position: absolute;
+  min-height: 100vh;
+  width: 100vw;
+}
+
 /* Style for Pixie Graphic */
 .pixie {
     position: absolute;
@@ -23,6 +31,7 @@
       transform: translateY(0) rotate(0deg);
     }
   }
+  
 
   /* Sparkles effect */
   .sparkle {

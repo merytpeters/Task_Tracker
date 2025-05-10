@@ -1,14 +1,7 @@
-.login {
-    background: rgb(43, 130, 171);
-    position: absolute;
-    min-height: 100vh;
-    width: 100vw;
-}
-
 .login-header {
     position: absolute;
     display: flex;
-    left: 47%;
+    left: 45%;
     font-size: x-large;
     margin-top: 12%;
     color: whitesmoke;
@@ -21,14 +14,14 @@
     flex-direction: column;
     justify-content: center;
     gap: 30px;
-    height: 25vh;
+    height: 30vh;
     position: relative;
     margin: 10% auto;
-    width: 15%;
+    width: 35%;
     background: rgb(51, 109, 136);
     padding: 7%;
     border-radius: 8px;
-}
+} 
 
 .login-form div {
     position: relative;
@@ -49,4 +42,17 @@
     border-radius: 4px;
     padding: 10px 20px;
     color: whitesmoke;
+}
+
+@media (max-width: 800px) {
+    .login-form {
+      gap: 5px;
+      height: 35vh;
+      margin: 43% auto;
+      width: 60%;
+    }
+
+    .login-header {
+      margin: 45% auto;
+    }
 }
