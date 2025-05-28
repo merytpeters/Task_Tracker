@@ -1,0 +1,5 @@
+.logo h1 {
+  display: flex;
+  justify-content: left;
+  font-family: 'Courier New', Courier, monospace;
+}

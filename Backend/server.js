@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRouter from './routes/userRoutes.js';
+import taskRouter from './routes/taskRoutes.js';
 import cors from 'cors';
 
 dotenv.config();
@@ -14,6 +15,7 @@ app.use(express.json());
 
 const allowedOrigins = [
   'http://localhost:3000', // for local dev
+  'http://localhost:3001', // for local dev with Vite
   'https://task-tracker-nine-delta.vercel.app' // Vercel frontend
 ];
 
@@ -36,7 +38,7 @@ app.get('/api', (req, res) => {
   res.json({message: 'Welcome to the Home Page of Task Tracker'});
 });
 
-app.use('/api/users', userRouter);
+app.use('/api/users', userRouter, taskRouter);
 
 // Start server
 app.listen(port, () => {

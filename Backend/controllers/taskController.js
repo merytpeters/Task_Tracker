@@ -44,6 +44,18 @@ export async function updateTask(req, res) {
   }
 }
 
+export async function viewTasks(req, res) {
+  try {
+    const tasks = await Task.find();
+    res.status(200).json({
+      message: "Tasks retrieved successfully",
+      tasks
+    });
+  } catch (err) {
+    res.status(500).send('Error retrieving tasks');
+  }
+}
+
 export function Notification(task, due_date) {
   const timeUntilDue = new Date(due_date) - new Date();
   if (timeUntilDue > 0) {
