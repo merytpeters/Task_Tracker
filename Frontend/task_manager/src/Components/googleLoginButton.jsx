@@ -1,4 +1,4 @@
-import { GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 import axios from 'axios';
 
 const GoogleLoginButton = () => {
@@ -18,10 +18,12 @@ const GoogleLoginButton = () => {
   };
 
   return (
-    <GoogleLogin
-      onSuccess={handleSuccess}
-      onError={() => console.log("Login Failed")}
-    />
+    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+      <GoogleLogin
+        onSuccess={handleSuccess}
+        onError={() => console.log("Login Failed")}
+      />
+    </GoogleOAuthProvider>
   );
 };
 
