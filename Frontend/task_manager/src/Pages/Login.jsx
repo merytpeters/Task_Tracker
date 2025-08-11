@@ -2,7 +2,9 @@ import  { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Navbar from '../Components/navbar.jsx';
-import '../styles/login.css'
+import Alert from '../Components/alert.jsx';
+import '../styles/login.css';
+import GoogleLoginButton from '../Components/googleLoginButton.jsx';
 
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
@@ -12,6 +14,9 @@ function Login() {
             password: '',
             username:'',
         });
+
+        const [alertMessage, setAlertMessage] = useState('');
+        const [alertType, setAlertType] = useState('');
     
         // Handles input
         const handleChange = (e) => {
@@ -28,12 +33,19 @@ function Login() {
             e.preventDefault();
             try {
                 // const response = 
-                axios.post(`${baseUrl}/api/users/login`, formData)
-                // console.log("Login succesful:", response.data)
-                alert("Successful");
-                navigate('/profile');
+                const response = await axios.post(`${baseUrl}/api/users/login`, formData);
+                if (response.status === 200 && response.data?.token) {
+                    setAlertType('success');
+                    setAlertMessage('Login successful! Redirecting...');
+                    setTimeout(() => navigate('/profile'), 1500);
+                } else {
+                    setAlertType('error');
+                    setAlertMessage('Login failed. Please try again.');
+                }
             } catch (error) {
-                // console.error("Error Signing in:", error);
+                // console.error("Login error:", error.response?.data || error.message);
+                setAlertType('error');
+                setAlertMessage(error.response?.data?.message || 'Login failed. Please check your credentials.');
             }
         };
 
@@ -69,7 +81,15 @@ function Login() {
                     />
                 </div>
                 <button type="submit" className="login-button">Login</button>
+                <GoogleLoginButton />
+                <Alert
+                   message={alertMessage}
+                   type={alertType}
+                   onClose={() => setAlertMessage('')}
+                   duration={3000}
+                />
             </form>
+
             </div>
         </div>
     );

@@ -8,6 +8,12 @@
     z-index: 1000;
 }
 
+.alert {
+    position: absolute;
+    left: 45%;
+    bottom: 20%;
+}
+
 .form {
     position: relative;
     display: flex;

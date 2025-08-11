@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import Navbar from '../Components/navbar.jsx';
 import { useNavigate } from 'react-router-dom';
+import Alert from '../Components/alert.jsx';
 import '../styles/signup.css';
 
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
@@ -15,6 +16,9 @@ function Signup() {
         username:'',
         confirmPassword: ''
     });
+
+    const [alertMessage, setAlertMessage] = useState('');
+    const [alertType, setAlertType] = useState('');
 
     // Handles input
     const handleChange = (e) => {
@@ -31,16 +35,24 @@ function Signup() {
         e.preventDefault();
         try {
             // const response = 
-            axios.post(`${baseUrl}/api/users/signup`, formData)
-            // console.log("User Created:", response.data)
-            alert("Signup Successful");
-            navigate('/login');
+            const response = await axios.post(`${baseUrl}/api/users/signup`, formData)
+            if (response.status === 200 || response.status === 201) {
+                setAlertType('success');
+                setAlertMessage('Signup successful! Redirecting...');
+                setTimeout(() => navigate('/login'), 1500);
+            } else {
+                setAlertType('error');
+                setAlertMessage('Signup failed. Please all required fields');
+                // console.log('Signup failed with status:', response.status);
+                }
         } catch (error) {
-            // console.error("Error creating user:", error);
+            console.error("Signup error:", error.response?.data || error.message);
+            setAlertType('error');
+            setAlertMessage(error.response?.data?.message || 'Signup failed. Please fill all fields');
         }
 
         if (formData.password !== formData.confirmPassword) {
-            alert ("Passwords do not match");
+            setAlertMessage("Passwords do not match");
             return;
         }
     };
@@ -107,6 +119,14 @@ function Signup() {
                 </div>
                 <button type='submit' className='signup-button'>Signup</button>
             </form>
+            <div className='alert'>
+                <Alert
+                   message={alertMessage}
+                   type={alertType}
+                   onClose={() => setAlertMessage('')}
+                   duration={3000}
+                />
+                </div>
             </div>
         </div>
     )
