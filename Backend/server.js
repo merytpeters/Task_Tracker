@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRouter from './routes/userRoutes.js';
 import taskRouter from './routes/taskRoutes.js';
+import authRouter from './routes/auth.js';
 import cors from 'cors';
 
 dotenv.config();
@@ -38,7 +39,8 @@ app.get('/api', (req, res) => {
   res.json({message: 'Welcome to the Home Page of Task Tracker'});
 });
 
-app.use('/api/users', userRouter, taskRouter);
+app.use('/api/users', userRouter, taskRouter, authRouter);
+
 
 // Start server
 app.listen(port, () => {

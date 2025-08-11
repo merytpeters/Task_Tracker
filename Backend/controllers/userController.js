@@ -1,4 +1,4 @@
-import User from '../models/user.js';
+import User from '../modules/user.js';
 import hashPassword from '../utils/hashPassword.js';
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';

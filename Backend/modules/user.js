@@ -12,8 +12,9 @@ const userSchema = new mongoose.Schema({
   },
   username: {
     type: String,
-    required: true,
-    unique: true
+    required: false,
+    unique: true,
+    sparse: true
   },
   email: {
     type: String,
@@ -22,8 +23,13 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true
-  }
+    required: false
+  },
+  googleId: {
+    type: String,
+    unique: true,
+    sparse: true,
+  },
 })
 
 export const User = mongoose.model('User', userSchema);
