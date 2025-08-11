@@ -6,12 +6,15 @@ const GoogleLoginButton = () => {
     try {
       const res = await axios.post(
         `${process.env.REACT_APP_API_BASE_URL}/api/auth/google`,
-        { token: credentialResponse.credential }
+        { credential: credentialResponse.credential }
       );
 
-      // Save token, redirect, etc.
-      localStorage.setItem("token", res.data.token);
-      window.location.href = '/profile';
+      if (res.data && res.data.token) {
+        localStorage.setItem("token", res.data.token);
+        window.location.href = '/profile';
+      } else {
+        console.error("No token received from server:", res.data);
+      }
     } catch (error) {
       console.error("Google login error", error.response?.data || error.message);
     }
