@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import axios from 'axios';
 import Navbar from '../Components/navbar.jsx';
 import { useNavigate } from 'react-router-dom';
 import Alert from '../Components/alert.jsx';
 import '../styles/signup.css';
-import { baseUrl } from '../lib/api.js';
+import api from '../lib/api.js';
 
 function Signup() {
     const [formData, setFormData] = useState ({
@@ -32,23 +31,30 @@ function Signup() {
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // Check for empty fields
+        for (const key in formData) {
+            if (!formData[key]) {
+                setAlertType('error');
+                setAlertMessage('Please fill all required fields');
+                return;
+            }
+        }
         if (formData.password !== formData.confirmPassword) {
-            setAlertType('error')
+            setAlertType('error');
             setAlertMessage("Passwords do not match");
             return;
         }
-
         try {
-            const response = await axios.post(`${baseUrl}/api/user/signup`, formData)
+            const response = await api.post('/api/user/signup', formData);
             if (response.status === 200 || response.status === 201) {
                 setAlertType('success');
                 setAlertMessage('Signup successful! Redirecting...');
                 setTimeout(() => navigate('/login'), 1500);
             } else {
                 setAlertType('error');
-                setAlertMessage('Signup failed. Please all required fields');
+                setAlertMessage('Signup failed. Please fill all required fields');
                 console.log('Signup failed with status:', response.status);
-                }
+            }
         } catch (error) {
             console.error("Signup error:", error.response?.data || error.message);
             setAlertType('error');

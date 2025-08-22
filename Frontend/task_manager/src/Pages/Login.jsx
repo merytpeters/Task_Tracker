@@ -1,11 +1,10 @@
 import  { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
 import Navbar from '../Components/navbar.jsx';
 import Alert from '../Components/alert.jsx';
 import '../styles/login.css';
 import GoogleLoginButton from '../Components/googleLoginButton.jsx';
-import { baseUrl } from '../lib/api.js';
+import api from '../lib/api.js';
 
 function Login() {
     const [formData, setFormData] = useState ({
@@ -32,7 +31,7 @@ function Login() {
             e.preventDefault();
             try {
                 // const response = 
-                const response = await axios.post(`${baseUrl}/api/user/login`, formData);
+                const response = await api.post(`${baseUrl}/api/user/login`, formData);
                 if (response.status === 200 && response.data?.token) {
                     setAlertType('success');
                     setAlertMessage('Login successful! Redirecting...');
