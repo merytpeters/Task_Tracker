@@ -1,17 +1,19 @@
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const GoogleLoginButton = () => {
+  const navigate = useNavigate();
   const handleSuccess = async (credentialResponse) => {
     try {
       const res = await axios.post(
         `${process.env.REACT_APP_API_BASE_URL}/api/auth/google`,
-        { credential: credentialResponse.credential }
+        { token: credentialResponse.credential }
       );
 
       if (res.data && res.data.token) {
         localStorage.setItem("token", res.data.token);
-        window.location.href = '/profile';
+        navigate('/profile');
       } else {
         console.error("No token received from server:", res.data);
       }
