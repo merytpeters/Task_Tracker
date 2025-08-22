@@ -5,8 +5,7 @@ import Navbar from '../Components/navbar.jsx';
 import Alert from '../Components/alert.jsx';
 import '../styles/login.css';
 import GoogleLoginButton from '../Components/googleLoginButton.jsx';
-
-const baseUrl = process.env.REACT_APP_API_BASE_URL;
+import { baseUrl } from '../lib/api.js';
 
 function Login() {
     const [formData, setFormData] = useState ({
@@ -33,7 +32,7 @@ function Login() {
             e.preventDefault();
             try {
                 // const response = 
-                const response = await axios.post(`${baseUrl}/api/users/login`, formData);
+                const response = await axios.post(`${baseUrl}/api/user/login`, formData);
                 if (response.status === 200 && response.data?.token) {
                     setAlertType('success');
                     setAlertMessage('Login successful! Redirecting...');

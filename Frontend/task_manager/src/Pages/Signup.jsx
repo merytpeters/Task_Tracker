@@ -4,8 +4,7 @@ import Navbar from '../Components/navbar.jsx';
 import { useNavigate } from 'react-router-dom';
 import Alert from '../Components/alert.jsx';
 import '../styles/signup.css';
-
-const baseUrl = process.env.REACT_APP_API_BASE_URL;
+import { baseUrl } from '../lib/api.js';
 
 function Signup() {
     const [formData, setFormData] = useState ({
@@ -33,9 +32,14 @@ function Signup() {
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (formData.password !== formData.confirmPassword) {
+            setAlertType('error')
+            setAlertMessage("Passwords do not match");
+            return;
+        }
+
         try {
-            // const response = 
-            const response = await axios.post(`${baseUrl}/api/users/signup`, formData)
+            const response = await axios.post(`${baseUrl}/api/user/signup`, formData)
             if (response.status === 200 || response.status === 201) {
                 setAlertType('success');
                 setAlertMessage('Signup successful! Redirecting...');
@@ -43,17 +47,12 @@ function Signup() {
             } else {
                 setAlertType('error');
                 setAlertMessage('Signup failed. Please all required fields');
-                // console.log('Signup failed with status:', response.status);
+                console.log('Signup failed with status:', response.status);
                 }
         } catch (error) {
             console.error("Signup error:", error.response?.data || error.message);
             setAlertType('error');
             setAlertMessage(error.response?.data?.message || 'Signup failed. Please fill all fields');
-        }
-
-        if (formData.password !== formData.confirmPassword) {
-            setAlertMessage("Passwords do not match");
-            return;
         }
     };
         

@@ -39,7 +39,8 @@ app.get('/api', (req, res) => {
   res.json({message: 'Welcome to the Home Page of Task Tracker'});
 });
 
-app.use('/api/users', userRouter, taskRouter, authRouter);
+app.use('/api/user', userRouter, authRouter);
+app.use('/api/user/task', taskRouter);
 
 
 // Start server
