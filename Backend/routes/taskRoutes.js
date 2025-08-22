@@ -3,7 +3,7 @@ import { createTask, updateTask, viewTasks } from '../controllers/taskController
 
 const router = express.Router();
 
-router.post('/task', createTask, updateTask);
+router.post('/', createTask, updateTask);
 router.get('/tasks', viewTasks);
 
 export default router;

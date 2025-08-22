@@ -30,18 +30,17 @@ function Login() {
         const handleSubmit = async (e) => {
             e.preventDefault();
             try {
-                // const response = 
-                const response = await api.post(`${baseUrl}/api/user/login`, formData);
+                const response = await api.post('/api/user/login', formData);
                 if (response.status === 200 && response.data?.token) {
+                    localStorage.setItem('token', response.data.token);
                     setAlertType('success');
                     setAlertMessage('Login successful! Redirecting...');
-                    setTimeout(() => navigate('/profile'), 1500);
+                    setTimeout(() => navigate('/profile'), 500);
                 } else {
                     setAlertType('error');
                     setAlertMessage('Login failed. Please try again.');
                 }
             } catch (error) {
-                // console.error("Login error:", error.response?.data || error.message);
                 setAlertType('error');
                 setAlertMessage(error.response?.data?.message || 'Login failed. Please check your credentials.');
             }

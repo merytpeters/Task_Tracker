@@ -27,6 +27,8 @@ app.use(cors({
 }
 ))
 
+app.options('*', cors());
+
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI).then(() => {
   console.log('Connected to MongoDB');
@@ -39,8 +41,9 @@ app.get('/api', (req, res) => {
   res.json({message: 'Welcome to the Home Page of Task Tracker'});
 });
 
-app.use('/api/user', userRouter, authRouter);
-app.use('/api/user/task', taskRouter);
+app.use('/api/user', userRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/task', taskRouter);
 
 
 // Start server

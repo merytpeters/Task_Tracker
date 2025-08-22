@@ -57,11 +57,11 @@ function Profile() {
             <div className='sidebar-horizontal-line'>
                 <div className='sidebar'>
                     <ul>
-                        <li><a href='/'>Profile</a></li>
-                        <li><a href='/'>Today</a></li>
-                        <li><a href='/'>Upcoming</a></li>
-                        <li><a href='/'>Completed</a></li>
-                        <li><a href='/'>Projects</a></li>
+                        <li><a href='/profile'>Profile</a></li>
+                        <li><a href='/profile'>Today</a></li>
+                        <li><a href='/profile'>Upcoming</a></li>
+                        <li><a href='/profile'>Completed</a></li>
+                        <li><a href='/profile'>Projects</a></li>
                     </ul>
                 </div>
             </div>
