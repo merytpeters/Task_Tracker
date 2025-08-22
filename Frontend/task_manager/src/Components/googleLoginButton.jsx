@@ -5,7 +5,7 @@ const GoogleLoginButton = () => {
   const handleSuccess = async (credentialResponse) => {
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_API_BASE_URL}/api/auth/`,
+        `${process.env.REACT_APP_API_BASE_URL}/api/auth`,
         { credential: credentialResponse.credential }
       );
 
