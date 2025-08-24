@@ -13,7 +13,7 @@ const GoogleLoginButton = () => {
 
       if (res.data && res.data.token) {
         localStorage.setItem("token", res.data.token);
-        setTimeout(() => navigate('/profile'), 500);
+        setTimeout(() => navigate('/profile'), 1000);
       } else {
         console.error("No token received from server:", res.data);
       }
